@@ -1,5 +1,7 @@
 #include "ft_printf.h"
 
+int glob;
+
 void	ft_print_char(char c)
 {
 	if (c)
@@ -67,8 +69,19 @@ int ft_print_convert(t_options *options, va_list args)
 	return (0);
 }
 
+void	ft_print_flags(t_options *options)
+{
+	if(options->flag_hashtag == 1 && (options->conversion == 'x' || options->conversion == 'X'))
+		ft_putstr_fd("0x", 1);
+	if(options->flag_space == 1 && (options->conversion == 'd' || options->conversion == 'i'))
+		ft_putchar_fd(' ', 1);
+	if(options->flag_plus == 1 && options->flag_space == 0 && options->conversion != 'x' && options->conversion != 'X')
+		ft_putchar_fd('+', 1);
+}
+
 int ft_print(t_options *options, va_list args)
 {
+	ft_print_flags(options);
 	ft_print_convert(options, args);
 	return(0);
 }
@@ -100,8 +113,25 @@ int	ft_get_convert(t_options *options, const char **str)
 	return (0);
 }
 
+int	ft_get_flags(t_options *options, const char **str)
+{
+	while(**str && ((**str) == '+' || (**str) == '#' || (**str) == ' '))
+	{
+		if(**str && (**str) == '+')
+			options->flag_plus = 1;
+		else if(**str && (**str) == ' ')
+			options->flag_space = 1;
+		else if(**str && (**str) == '#')
+			options->flag_hashtag = 1;
+		(*str)++;
+	}
+	return (0);
+}
+
 int	ft_get_settings(t_options *options, const char **str)
 {
+	if(ft_get_flags(options, str))
+		return (1);
 	if(ft_get_convert(options, str))
 		return (1);
 	return (0);
@@ -110,6 +140,9 @@ int	ft_get_settings(t_options *options, const char **str)
 void	ft_tester(t_options *options)
 {
 	printf("\nConversion = %c\n", options->conversion);
+	printf("\nFlag plus = %d\n", options->flag_plus);
+	printf("\nFlag hashtag = %d\n", options->flag_hashtag);
+	printf("\nFlag space = %d\n", options->flag_space);
 }
 
 int	ft_printf(const char *str, ...)
@@ -126,7 +159,7 @@ int	ft_printf(const char *str, ...)
 			++str;
 			if(ft_get_settings(options, &str))
 				break;
-			ft_tester(options);
+			if(glob == 1) {ft_tester(options);}
 			if(ft_print(options, settings))
 				break;
 		}
@@ -138,10 +171,11 @@ int	ft_printf(const char *str, ...)
 	return (0);
 }
 
-int	main()
+int	main(int argc, char **argv)
 {
+	glob = argc - 1;
 	char *str = "Salut";
-	ft_printf("Salut %ps", NULL);
-	printf("Salut %ps", NULL);
+	ft_printf("Salut %    ds", 533);
+	printf("\nSalut %    ds", 533);
 	return (0);
 }

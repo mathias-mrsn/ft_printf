@@ -12,6 +12,9 @@
 typedef	struct s_options
 {
 	char	conversion;
+	int		flag_plus;
+	int		flag_space;
+	int		flag_hashtag;
 }				t_options;
 
 #endif
