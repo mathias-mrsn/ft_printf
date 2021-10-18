@@ -1,8 +1,8 @@
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int glob;
 
-void	ft_tester(t_options *options, t_argument *arg)
+void	ft_tester(t_options *options, t_argument *arg) /* A supprimer */
 {
 	printf("\nConversion = %c\n", options->conversion);
 	printf("\nFlag plus = %d\n", options->flag_plus);

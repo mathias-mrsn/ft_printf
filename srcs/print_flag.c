@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	ft_print_blank_char(t_options *options, t_argument *arg, int *blank)
 {
