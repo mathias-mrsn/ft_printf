@@ -1,12 +1,11 @@
 SRCS =	srcs/ft_printf.c \
 		srcs/parse.c \
-		srcs/pase2.c\
 		srcs/print_arg.c \
-		srcs/print_flag.c \
 		srcs/tools.c \
 		srcs/tools2.c
 
 OBJS = ${SRCS:.c=.o}
+
 SRCSBONUS =	srcs/bonus/ft_printf_bonus.c \
 		srcs/bonus/parse_bonus.c \
 		srcs/bonus/parse2_bonus.c\
