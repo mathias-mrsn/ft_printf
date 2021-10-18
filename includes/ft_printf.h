@@ -60,7 +60,7 @@ void	ft_get_arg_length(t_options *options, t_argument 	*arg);
 void 	ft_print_addr(unsigned long addr, int first, t_options *options);
 void	ft_get_arg(t_options *options, va_list settings, t_argument *arg);
 void	ft_unsigned_putnbr(unsigned int nb, char *base, t_options *options);
-void	ft_print_blank_char(t_options *options, t_argument *arg, int *blank);
+void	ft_print_blank_char(t_options *options, int *blank);
 void	ft_print_blank_digit(t_options *options, t_argument *arg, int *blank);
 void	ft_get_precision(t_options *options, const char **str, va_list settings);
 void	ft_parse_hub(t_options *options, const char **str, va_list settings, t_argument *arg);

@@ -1,4 +1,4 @@
-#include "../includes/ft_printf.h"
+#include "../../includes/ft_printf.h"
 
 void	ft_putnbr(int n, int fd, t_options *options)
 {

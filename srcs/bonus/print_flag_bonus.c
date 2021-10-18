@@ -1,6 +1,6 @@
-#include "../includes/ft_printf.h"
+#include "../../includes/ft_printf.h"
 
-void	ft_print_blank_char(t_options *options, t_argument *arg, int *blank)
+void	ft_print_blank_char(t_options *options, int *blank)
 {
 	if(options->flag_zero && !options->flag_align && !options->flag_dot)
 		return ;
@@ -37,7 +37,7 @@ void	ft_print_blank(t_options *options, t_argument *arg)
 
 	blank = 0;
 	if (ft_is_charset(options->conversion, "sc%"))
-		ft_print_blank_char(options, arg, &blank);
+		ft_print_blank_char(options, &blank);
 	else
 		ft_print_blank_digit(options, arg, &blank);
 	// printf("[%d]/[%d]/[%d]", blank, options->width, options->precision_value);

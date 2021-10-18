@@ -1,4 +1,4 @@
-#include "../includes/ft_printf.h"
+#include "../../includes/ft_printf.h"
 
 int glob;
 
@@ -46,12 +46,12 @@ int	ft_printf(const char *str, ...)
 	return (options.printed_length);
 }
 
-int	main(int argc, char **argv)
-{
-	glob = argc - 1;
+// int	main(int argc, char **argv)
+// {
+// 	glob = argc - 1;
 
-	ft_printf("[%d]", ft_printf("this %-43s number", "test"));
-	printf("\n");
-	printf("[%d]", ft_printf("this %-43s number", "test"));
+// 	ft_printf("[%d]", ft_printf("this %-43s number", "test"));
+// 	printf("\n");
+// 	printf("[%d]", ft_printf("this %-43s number", "test"));
 
-}
+// }
