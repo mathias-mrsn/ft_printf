@@ -19,7 +19,7 @@ void	ft_print_blank_digit(t_options *options, t_argument *arg, int *blank)
 {
 	if(options->flag_zero && !options->flag_align && !options->flag_dot)
 			return;
-	if((int)arg->arg < 0)
+	if(arg->arg < 0)
 		options->width -= 1;
 	if(options->conversion == 'p')
 		options->width -= 2;
@@ -57,7 +57,7 @@ void	ft_print_zero(t_options *options, t_argument *arg)
 		if(options->flag_zero && (!options->flag_dot || !options->precision_value))
 		{
 			zero = options->width - options->arg_length;
-			if((int)arg->arg < 0)
+			if(arg->arg < 0)
 				zero--;
 		}
 		else

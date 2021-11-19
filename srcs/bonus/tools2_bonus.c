@@ -8,8 +8,6 @@ void	ft_putnbr(int n, int fd, t_options *options)
 		nb = -n;
 	else
 		nb = n;
-	if(n < 0)
-		ft_putchar('-', fd, options);
 	if(nb > 9)
 		ft_putnbr(nb / 10, fd, options);
 	ft_putchar(nb % 10 + 48, fd, options);

@@ -31,9 +31,6 @@ void ft_print_addr(unsigned long addr, int first, t_options *options)
 void ft_print_convert(t_options *options, t_argument *arg)
 {
 	if(options->conversion == 'd' || options->conversion == 'i')
-		if((int)arg->arg < 0)
-			ft_putnbr((int)arg->arg * -1, 1, options);
-		else
 			ft_putnbr((int)arg->arg, 1, options);
 	else if(options->conversion == 's')
 		ft_putstr(arg->arg_s, options->precision_value, options);

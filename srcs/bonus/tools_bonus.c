@@ -11,11 +11,29 @@ int	ft_is_charset(char c, char *set)
 	return (0);
 }
 
+int			ft_nbrlen_base_unsigned(unsigned long n, char *base)
+{
+	int			i;
+	int	base_len;
+
+	base_len = ft_strlen(base);
+	i = 1;
+	if(base_len <= 1)
+		return (0);
+	while (n >= (unsigned long)base_len)
+	{
+		n /= base_len;
+		i++;
+	}
+	return (i);
+}
+
 int			ft_nbrlen_base(long long n, char *base)
 {
 	int			i;
-	int			base_len;
+	long long	base_len;
 
+	// printf("%lu", n);
 	base_len = ft_strlen(base);
 	i = 1;
 	if(base_len <= 1)

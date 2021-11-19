@@ -20,11 +20,11 @@ void	ft_parse_init(t_argument *arg, t_options *options)
 
 void	ft_procesing(t_options *options)
 {
-	if(options->flag_hashtag == 1 && (options->conversion != 'x' && options->conversion != 'X'))
+	if((options->conversion != 'x' && options->conversion != 'X'))
 		options->flag_hashtag = 0;
-	if(options->flag_space == 1 && (options->conversion != 'd' && options->conversion != 'i'))
+	if((options->conversion != 'd' && options->conversion != 'i'))
 		options->flag_space = 0;
-	if(options->flag_plus == 0 || options->flag_space == 1 || (options->conversion != 'x' || options->conversion != 'X'))
+	if(!(options->conversion == 'd' || options->conversion == 'i'))
 		options->flag_plus = 0;
 	if(options->flag_plus && options->flag_space)
 		options->flag_space = 0;
@@ -42,14 +42,17 @@ void	ft_get_arg_length(t_options *options, t_argument 	*arg)
 		arg->base_used = HEXA;
 
 	if(ft_is_charset(options->conversion, "diuxXp"))
-		if(arg->arg < 0)
-			options->arg_length = ft_nbrlen_base(-1 * arg->arg, arg->base_used);
+		if(options->conversion == 'p' && (long)arg->arg < 0)
+			options->arg_length = (ft_nbrlen_base_unsigned(arg->arg, arg->base_used));
+		else if(arg->arg < 0)
+			options->arg_length = (ft_nbrlen_base(-1 * arg->arg, arg->base_used));
 		else
 			options->arg_length = ft_nbrlen_base(arg->arg, arg->base_used);
 	else if(options->conversion == 's')
 		options->arg_length = ft_strlen(arg->arg_s);
 	else
 		options->arg_length = 1;
+
 }
 
 void	ft_get_arg(t_options *options, va_list settings, t_argument 	*arg)
@@ -68,7 +71,7 @@ void	ft_get_arg(t_options *options, va_list settings, t_argument 	*arg)
 		arg->arg_s = va_arg(settings, char *);
 	if(arg->arg_s == NULL && options->conversion == 's')
 		arg->arg_s = "(null)";
-	ft_get_arg_length(options, arg);	
+	ft_get_arg_length(options, arg);
 }
 
 void	ft_parse_hub(t_options *options, const char **str, va_list settings, t_argument *arg)

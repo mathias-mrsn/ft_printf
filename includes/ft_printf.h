@@ -11,6 +11,7 @@
 # include <stdio.h> /* A supprimer */
 # include <unistd.h>
 #include <stdlib.h>
+#include <limits.h>
 
 typedef	struct 	s_options
 {
@@ -39,6 +40,7 @@ typedef	struct s_argument
 }				t_argument;
 
 size_t 	ft_strlen(const char *str);
+int			ft_nbrlen_base_unsigned(unsigned long n, char *base);
 int		ft_printf(const char *str, ...);
 int		ft_is_charset(char c, char *set);
 void	ft_procesing(t_options *options);

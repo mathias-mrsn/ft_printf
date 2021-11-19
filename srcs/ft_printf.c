@@ -45,14 +45,3 @@ int	ft_printf(const char *str, ...)
 	va_end(settings);
 	return (options.printed_length);
 }
-
-int	main(int argc, char **argv)
-{
-	glob = argc - 1;
-
-	printf("%s", argv[1]);
-	ft_printf("[%d]", 3);
-	printf("\n");
-	printf("[%d]", 3);
-
-}

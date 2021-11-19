@@ -31,9 +31,6 @@ void ft_print_addr(unsigned long addr, int first, t_options *options)
 void ft_print_convert(t_options *options, t_argument *arg)
 {
 	if(options->conversion == 'd' || options->conversion == 'i')
-		if((int)arg->arg < 0)
-			ft_putnbr((int)arg->arg * -1, 1, options);
-		else
 			ft_putnbr((int)arg->arg, 1, options);
 	else if(options->conversion == 's')
 		ft_putstr(arg->arg_s, options->precision_value, options);
@@ -55,22 +52,26 @@ void	ft_print_sign(t_options *options, t_argument *arg)
 {
 	if (ft_is_charset(options->conversion, "diu"))
 	{
-		if ((int)arg->arg < 0)
+		if (arg->arg < 0)
 			ft_putchar('-', 1, options);
 		else if(options->flag_plus)
 			ft_putchar('+', 1, options);
 		else if(options->flag_space)
 			ft_putchar(' ', 1, options);
 	}
-	else if (ft_is_charset(options->conversion, "xX") && options->flag_hashtag)
-		ft_putstr("0x", -1, options);
+	else if (ft_is_charset(options->conversion, "xX") && options->flag_hashtag && arg->arg)
+	{
+		if (options->conversion == 'x')
+			ft_putstr("0x", -1, options);
+		if (options->conversion == 'X')
+			ft_putstr("0X", -1, options);
+	}
 
 }
 
 void	ft_print_hub(t_options *options, t_argument *arg)
 {
 	
-
 	if(!options->flag_align)
 		ft_print_blank(options, arg);
 	ft_print_sign(options, arg);
