@@ -1,24 +1,24 @@
-#include "../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_is_charset(char c, char *set)
 {
-	while(*set)
+	while (*set)
 	{
-		if(c == *set)
+		if (c == *set)
 			return (1);
 		set++;
 	}
 	return (0);
 }
 
-int			ft_nbrlen_base_unsigned(unsigned long n, char *base)
+int	ft_nbrlen_base_unsigned(unsigned long n, char *base)
 {
-	int			i;
+	int	i;
 	int	base_len;
 
 	base_len = ft_strlen(base);
 	i = 1;
-	if(base_len <= 1)
+	if (base_len <= 1)
 		return (0);
 	while (n >= (unsigned long)base_len)
 	{
@@ -28,7 +28,7 @@ int			ft_nbrlen_base_unsigned(unsigned long n, char *base)
 	return (i);
 }
 
-int			ft_nbrlen_base(long long n, char *base)
+int	ft_nbrlen_base(long long n, char *base)
 {
 	int			i;
 	long long	base_len;
@@ -36,7 +36,7 @@ int			ft_nbrlen_base(long long n, char *base)
 	// printf("%lu", n);
 	base_len = ft_strlen(base);
 	i = 1;
-	if(base_len <= 1)
+	if (base_len <= 1)
 		return (0);
 	while (n >= base_len)
 	{

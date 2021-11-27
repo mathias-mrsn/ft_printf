@@ -1,8 +1,7 @@
 SRCS =	srcs/ft_printf.c \
 		srcs/parse.c \
 		srcs/print_arg.c \
-		srcs/tools.c \
-		srcs/tools2.c
+		srcs/tools.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -21,7 +20,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 INCS = includes
 
-all: ${NAME}
+all: bonus
 
 .c.o:
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INCS}
