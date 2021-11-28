@@ -1,26 +1,20 @@
 SRCS =	srcs/ft_printf.c \
 		srcs/parse.c \
+		srcs/parse2.c\
 		srcs/print_arg.c \
-		srcs/tools.c
+		srcs/print_flag.c \
+		srcs/tools.c \
+		srcs/tools2.c
 
 OBJS = ${SRCS:.c=.o}
 
-SRCSBONUS =	srcs/bonus/ft_printf_bonus.c \
-		srcs/bonus/parse_bonus.c \
-		srcs/bonus/parse2_bonus.c\
-		srcs/bonus/print_arg_bonus.c \
-		srcs/bonus/print_flag_bonus.c \
-		srcs/bonus/tools_bonus.c \
-		srcs/bonus/tools2_bonus.c
-
-OBJSBONUS	= ${SRCSBONUS:.c=.o}
 NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 INCS = includes
 
-all: bonus
+all: 		${NAME}
 
 .c.o:
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INCS}
@@ -29,11 +23,11 @@ $(NAME): $(OBJS)
 			ar -rcs $(NAME) $(OBJS)
 
 
-bonus: ${OBJSBONUS}
-			ar -rcs ${NAME} ${OBJSBONUS}
+bonus:		all
+			
 
 clean:
-			${RM} ${OBJS} ${OBJSBONUS}
+			${RM} ${OBJS}
 
 fclean: clean
 			${RM} ${NAME}

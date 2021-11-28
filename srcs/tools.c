@@ -1,24 +1,6 @@
 #include "ft_printf.h"
 
-size_t ft_strlen(const char *str)
-{
-	size_t i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-void ft_putstr(char *str, int nb, t_options *options)
-{
-	if (nb == 0)
-		return;
-	while (*str && nb--)
-		ft_putchar(*str++, 1, options);
-}
-
-int ft_is_charset(char c, char *set)
+int	ft_is_charset(char c, char *set)
 {
 	while (*set)
 	{
@@ -29,11 +11,29 @@ int ft_is_charset(char c, char *set)
 	return (0);
 }
 
-int ft_nbrlen_base(long long n, char *base)
+int	ft_nbrlen_base_unsigned(unsigned long n, char *base)
 {
-	int i;
-	int base_len;
+	int	i;
+	int	base_len;
 
+	base_len = ft_strlen(base);
+	i = 1;
+	if (base_len <= 1)
+		return (0);
+	while (n >= (unsigned long)base_len)
+	{
+		n /= base_len;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_nbrlen_base(long long n, char *base)
+{
+	int			i;
+	long long	base_len;
+
+	// printf("%lu", n);
 	base_len = ft_strlen(base);
 	i = 1;
 	if (base_len <= 1)
@@ -44,4 +44,10 @@ int ft_nbrlen_base(long long n, char *base)
 		i++;
 	}
 	return (i);
+}
+
+void	ft_putchar(char c, int fd, t_options *options)
+{
+	write(fd, &c, 1);
+	options->printed_length++;
 }
