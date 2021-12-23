@@ -1,4 +1,7 @@
-﻿# ft_printf
+﻿## Warning
+
+The sharing of this project on my GitHub aims to help peoples to open their minds to new logics or help peoples in case of difficulty. In no way, that aims to copy and paste this work on your own repository.
+# ft_printf
 
 **ft_printf** is a project from the **42** Common Core, The project aims to recreate your own C version of printf, which must work with the following conversions : "diupxXcs%" .
 
